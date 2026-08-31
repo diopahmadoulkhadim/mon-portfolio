@@ -67,22 +67,112 @@ Description :
 const themeButton = document.getElementById("themeButton");
 
 // Ajoute un écouteur au clic sur le bouton
-themeButton.addEventListener("click", function () {
-  // Bascule la classe "dark-mode" sur l'élément body
-  document.body.classList.toggle("dark-mode");
+if (themeButton) {
+  themeButton.addEventListener("click", function () {
+    // Bascule la classe "dark-mode" sur l'élément body
+    document.body.classList.toggle("dark-mode");
 
-  // Met à jour l'icône du bouton en fonction du thème
-  if (document.body.classList.contains("dark-mode")) {
-    // Si le mode sombre est activé, affiche l'icône soleil
-    themeButton.innerHTML = '<i class="bi bi-sun"></i>';
-  } else {
-    // Si le mode clair est activé, affiche l'icône lune
-    themeButton.innerHTML = '<i class="bi bi-moon"></i>';
+    // Met à jour l'icône du bouton en fonction du thème
+    if (document.body.classList.contains("dark-mode")) {
+      // Si le mode sombre est activé, affiche l'icône soleil
+      themeButton.innerHTML = '<i class="bi bi-sun"></i>';
+    } else {
+      // Si le mode clair est activé, affiche l'icône lune
+      themeButton.innerHTML = '<i class="bi bi-moon"></i>';
+    }
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 3 : TEXTE ANIMÉ EN HERO                                            */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+const typedTextElement = document.getElementById("typedText");
+const words = ["Développeur Web", "Créateur de contenu", "Entrepreneur", "Passionné du numérique"];
+
+if (typedTextElement) {
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function typeLoop() {
+    const currentWord = words[wordIndex];
+
+    if (!isDeleting) {
+      charIndex++;
+      typedTextElement.textContent = currentWord.slice(0, charIndex);
+
+      if (charIndex === currentWord.length) {
+        isDeleting = true;
+        setTimeout(typeLoop, 1200);
+        return;
+      }
+    } else {
+      charIndex--;
+      typedTextElement.textContent = currentWord.slice(0, charIndex);
+
+      if (charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+      }
+    }
+
+    const speed = isDeleting ? 70 : 100;
+    setTimeout(typeLoop, speed);
   }
+
+  typeLoop();
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 4 : NAVBAR ANIMÉE ET LIEN ACTIF                                   */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+const navbar = document.querySelector(".navbar");
+const navLinks = document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll("section[id]");
+
+function updateNavbarState() {
+  if (!navbar) return;
+
+  if (window.scrollY > 20) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+
+  let currentSection = "accueil";
+  const scrollPosition = window.scrollY + 140;
+
+  sections.forEach(section => {
+    const id = section.getAttribute("id");
+    if (section.offsetTop <= scrollPosition) {
+      currentSection = id;
+    }
+  });
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute("href");
+    const isActive = href === `#${currentSection}`;
+    link.classList.toggle("active", isActive);
+  });
+}
+
+window.addEventListener("scroll", updateNavbarState, { passive: true });
+window.addEventListener("load", updateNavbarState);
+
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    const menu = document.getElementById("menu");
+    if (menu && menu.classList.contains("show")) {
+      const bsCollapse = bootstrap.Collapse.getOrCreateInstance(menu);
+      bsCollapse.hide();
+    }
+  });
 });
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
-/* SECTION 3 : ANIMATIONS AU SCROLL                                           */
+/* SECTION 4 : ANIMATIONS AU SCROLL                                           */
 /* ═══════════════════════════════════════════════════════════════════════════ */
 
 /*
