@@ -1,204 +1,499 @@
+/*
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║                      FEUILLE DE STYLE DU PORTFOLIO                        ║
+║                                                                            ║
+║  Variables CSS personnalisées                                             ║
+║  Styles des composants principaux                                         ║
+║  Mode sombre/clair                                                        ║
+║  Media queries pour responsive design                                     ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+*/
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 1 : VARIABLES CSS PERSONNALISÉES                                   */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
 :root {
-    --primary: #0d6efd;
-    --dark: #111827;
-    --text: #374151;
-    --light-bg: #f8fafc;
-    --card-radius: 18px;
-    --shadow: 0 12px 35px rgba(15, 23, 42, 0.09);
+  --primary: #2563eb;
+  --primary-strong: #1d4ed8;
+  --primary-soft: rgba(37, 99, 235, 0.12);
+  --dark: #0f172a;
+  --dark-soft: #1e293b;
+  --text: #1f2937;
+  --muted: #64748b;
+  --light-bg: #f8fafc;
+  --card-radius: 20px;
+  --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.05);
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 2 : STYLES GÉNÉRAUX DE LA PAGE                                     */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Configuration de la page HTML */
 html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 75px;
+  scroll-behavior: smooth;        /* Défilement lisse */
+  scroll-padding-top: 75px;       /* Espace pour la navbar fixe */
 }
 
+/* Styles du body */
 body {
-    margin: 0;
-    color: var(--text);
-    background: #ffffff;
-    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    line-height: 1.7;
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 26%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.7;
 }
 
+/* Masque le débordement sur les sections */
 section {
-    overflow: hidden;
+  overflow: hidden;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 3 : BARRE DE NAVIGATION (NAVBAR)                                   */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Styles de la navbar */
 .navbar {
-    padding: 14px 0;
-    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.12);
+  padding: 14px 0;
+  background: rgba(15, 23, 42, 0.88) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .navbar-brand {
-    letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  font-size: 1.2rem;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 4 : SECTION HÉROS                                                  */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Section héros (accueil) */
 .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 130px 0 80px;
-    background:
-        linear-gradient(135deg, rgba(13, 110, 253, 0.08), transparent 55%),
-        var(--light-bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 130px 0 80px;
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent 52%),
+    linear-gradient(180deg, #f8fafc 0%, #eef4ff 100%);
 }
 
 .hero h1 {
-    max-width: 720px;
-    line-height: 1.15;
+  max-width: 720px;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
 }
 
+/* Sous-titre du héros */
 .hero h2 {
-    color: #4b5563;
+  color: #4b5563;               /* Gris moyen */
 }
 
+/* Paragraphe de contenu du héros */
 .hero .lead {
-    max-width: 650px;
+  max-width: 650px;             /* Limite la largeur du texte */
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 5 : IMAGE DE PROFIL                                                */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Image de profil circulaire */
 .profile-image {
-    width: min(100%, 360px);
-    aspect-ratio: 1;
-    object-fit: cover;
-    border: 10px solid #ffffff;
-    border-radius: 50%;
-    box-shadow: 0 20px 45px rgba(13, 110, 253, 0.25);
-    transition: transform 0.3s ease;
+  width: min(100%, 360px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 10px solid rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  box-shadow: 0 24px 50px rgba(37, 99, 235, 0.18);
+  transition: transform 0.3s ease;
 }
 
+/* Animation au survol de l'image */
 .profile-image:hover {
-    transform: translateY(-8px) scale(1.02);
+  transform: translateY(-8px) scale(1.02);  /* Remonte et zoom léger */
 }
 
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 6 : CARTES (CARDS)                                                 */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Styles génériques des cartes */
 .card {
-    border-radius: var(--card-radius) !important;
-    box-shadow: var(--shadow) !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--shadow) !important;
+  border: 1px solid rgba(15, 23, 42, 0.04) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.14) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12) !important;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 7 : BARRES DE PROGRESSION                                          */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Conteneur des barres de progression */
 .progress {
-    height: 10px;
-    overflow: hidden;
-    border-radius: 50px;
-    background-color: #e5e7eb;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 50px;          /* Très arrondie */
+  background-color: #e5e7eb;   /* Gris clair */
 }
 
+/* Barre de progression elle-même */
 .progress-bar {
-    border-radius: 50px;
-    background: linear-gradient(90deg, #0d6efd, #6ea8fe);
+  border-radius: 50px;          /* Très arrondie */
+  background: linear-gradient(90deg, #0d6efd, #6ea8fe);  /* Gradient bleu */
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 8 : TITRES DE COMPÉTENCES                                          */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Titre de compétence avec pourcentage */
 h5 span {
-    float: right;
-    color: var(--primary);
-    font-size: 0.9rem;
+  float: right;                 /* Place le pourcentage à droite */
+  color: var(--primary);        /* Couleur primaire */
+  font-size: 0.9rem;           /* Légèrement plus petit */
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 9 : CARTES DE PROJETS - DESIGN MODERNE ET PROFESSIONNEL             */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/*
+╔════════════════════════════════════════════════════════════════════════════╗
+║                        STRATÉGIE WEB DESIGN APPLIQUÉE                      ║
+║                                                                            ║
+║ 1. IDENTITÉ VISUELLE : Chaque projet possède son propre dégradé coloré    ║
+║ 2. ICÔNES PERTINENTES : Représent clairement le type de projet            ║
+║ 3. PSYCHOLOGIE DES COULEURS : Évoque les émotions liées au domaine       ║
+║ 4. ANIMATIONS INTERACTIVES : Crée une expérience engageante au survol    ║
+║ 5. PROFONDEUR 3D : Ombres et effets lumineux pour le relief              ║
+║ 6. COHÉRENCE : Tous les dégradés utilisent 135° pour l'uniformité        ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+*/
+
+/* Cartes de projets - Conteneur principal */
 .project-card {
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 18px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 100%;
+  border: 1px solid rgba(15, 23, 42, 0.06) !important;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12) !important;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.02);
 }
 
 .project-image {
-    min-height: 150px;
-    display: grid;
-    place-items: center;
-    color: #ffffff;
-    font-size: 3rem;
-    background: linear-gradient(135deg, #0d6efd, #6610f2);
+  width: 100%;
+  height: 150px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  margin: 0.6rem 0 0.8rem;
+  transition: transform 0.4s ease;
+  background: #f1f5f9;
 }
 
+.project-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+  transition: transform 0.4s ease;
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(13, 110, 253, 0.7), rgba(102, 16, 242, 0.7));
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.05);
+}
+
+.project-card:hover .project-overlay {
+  opacity: 0.8;
+}
+
+.project-card .card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem 1rem 0.7rem;
+}
+
+.project-card .card-body h4 {
+  margin-bottom: 0.55rem;
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+.project-card .card-body p {
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+}
+
+.project-card .badge {
+  margin-right: 0.45rem;
+  margin-bottom: 0.2rem;
+  border-radius: 999px;
+  padding: 0.45rem 0.7rem;
+  font-weight: 500;
+}
+
+.project-card .card-footer {
+  margin-top: auto;
+  padding: 0 1rem 1rem;
+}
+
+.project-card .card-footer .btn {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* DÉGRADÉS UNIQUES POUR CHAQUE PROJET - IDENTITÉ VISUELLE DISTINCTE          */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/*
+╔════════════════════════════════════════════════════════════════════════════╗
+║ PROJET 1 : RESTAURANT                                                      ║
+║ ─────────────────────────────────────────────────────────────────────────  ║
+║ Image : resto.jpg                                                          ║
+║ Overlay : Orange semi-transparent (#FF6B35 → #F7931E)                    ║
+║ Icône : Tasse (bi-cup-hot) - Représente boissons et accueil               ║
+║                                                                            ║
+║ PSYCHOLOGIE DES COULEURS :                                                ║
+║ • Orange = Chaleur, convivialité, appétit, énergie positive              ║
+║ • Idéal pour : Créer une atmosphère accueillante et apaisante            ║
+║ • Effet visuel : Attire l'œil naturellement, chaleureux                  ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+*/
+.project-restaurant .project-overlay {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.65), rgba(247, 147, 30, 0.65)) !important;
+}
+
+/*
+╔════════════════════════════════════════════════════════════════════════════╗
+║ PROJET 2 : TABLEAU DE BORD FITNESS                                         ║
+║ ─────────────────────────────────────────────────────────────────────────  ║
+║ Image : fitness.jpg                                                        ║
+║ Overlay : Cyan-Bleu semi-transparent (#00D4FF → #0099E6)                  ║
+║ Icône : Graphique (bi-graph-up) - Représente données et performances      ║
+║                                                                            ║
+║ PSYCHOLOGIE DES COULEURS :                                                ║
+║ • Cyan/Bleu = Dynamisme, technologie, santé, confiance                    ║
+║ • Idéal pour : Dashboards et applications de données                      ║
+║ • Effet visuel : Moderne, énergique, inspire la performance              ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+*/
+.project-fitness .project-overlay {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.6), rgba(0, 153, 230, 0.6)) !important;
+}
+
+.project-fitness:hover {
+  filter: brightness(1.1);
+}
+
+/*
+╔════════════════════════════════════════════════════════════════════════════╗
+║ PROJET 3 : PLATEFORME DE FORMATION                                         ║
+║ ─────────────────────────────────────────────────────────────────────────  ║
+║ Image : conference.jpg                                                     ║
+║ Overlay : Violet-Indigo semi-transparent (#667EEA → #764BA2)              ║
+║ Icône : Livre (bi-book) - Représente l'éducation et la connaissance       ║
+║                                                                            ║
+║ PSYCHOLOGIE DES COULEURS :                                                ║
+║ • Violet/Indigo = Apprentissage, créativité, sagesse, sérénité            ║
+║ • Idéal pour : Plateformes d'éducation et développement personnel         ║
+║ • Effet visuel : Inspire confiance, expertise, réflexion                  ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+*/
+.project-learning .project-overlay {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.65), rgba(118, 75, 162, 0.65)) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 10 : BOUTONS                                                       */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Styles génériques des boutons */
 .btn {
-    border-radius: 10px;
-    font-weight: 600;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .btn:hover {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(37, 99, 235, 0.12);
 }
 
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+  border-color: transparent;
+}
+
+.btn-outline-primary {
+  border-width: 1.5px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 11 : LIENS RÉSEAUX SOCIAUX                                         */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Lien réseau social (icône circulaire) */
 .social-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    margin: 0 4px;
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 50%;
-    text-decoration: none;
-    transition: background 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 4px;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;           /* Forme circulaire */
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
+/* Animation au survol des liens sociaux */
 .social-link:hover {
-    color: #ffffff;
-    background: var(--primary);
-    transform: translateY(-3px);
+  color: #ffffff;
+  background: var(--primary);   /* Fond bleu au survol */
+  transform: translateY(-3px);  /* Remonte au survol */
 }
 
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 12 : MODE SOMBRE                                                   */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/*
+Thème sombre appliqué lorsque la classe "dark-mode" est ajoutée au body
+Les utilisateurs peuvent basculer entre thème clair et thème sombre
+*/
+
+/* Body en mode sombre */
 .dark-mode {
-    color: #e5e7eb;
-    background: #111827;
+  color: #e5e7eb;              /* Texte clair */
+  background: #111827;         /* Fond très foncé */
 }
 
+/* Sections avec fond clair en mode sombre */
 .dark-mode .hero,
 .dark-mode .bg-light {
-    background: #1f2937 !important;
+  background: #1f2937 !important;  /* Fond gris foncé */
 }
 
+/* Cartes en mode sombre */
 .dark-mode .card {
-    color: #e5e7eb;
-    background: #273449;
+  color: #e5e7eb;              /* Texte clair */
+  background: #273449;         /* Fond foncé */
 }
 
+/* Texte muted et sous-titres en mode sombre */
 .dark-mode .text-muted,
 .dark-mode .hero h2 {
-    color: #cbd5e1 !important;
+  color: #cbd5e1 !important;   /* Gris très clair */
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 13 : RESPONSIVE DESIGN - TABLETTES ET ÉCRANS MOYENS                */
+/* ═══════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 991.98px) {
-    .hero {
-        min-height: auto;
-        text-align: center;
-        padding-top: 120px;
-    }
+  /* Section héros sur petit écran */
+  .hero {
+    min-height: auto;           /* Pas de hauteur minimale */
+    text-align: center;         /* Texte centré */
+    padding-top: 120px;         /* Réduit l'espace supérieur */
+  }
 
-    .hero h1 {
-        font-size: 2.5rem;
-    }
+  /* Titre héros plus petit */
+  .hero h1 {
+    font-size: 2.5rem;
+  }
 
-    .hero .lead {
-        margin-right: auto;
-        margin-left: auto;
-    }
+  /* Paragraphes centrés */
+  .hero .lead {
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECTION 14 : RESPONSIVE DESIGN - TÉLÉPHONES MOBILES                        */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
 @media (max-width: 575.98px) {
-    .hero {
-        padding: 105px 0 60px;
-    }
+  /* Section héros sur téléphone */
+  .hero {
+    padding: 105px 0 60px;      /* Moins d'espace */
+  }
 
-    .hero h1 {
-        font-size: 2rem;
-    }
+  /* Titre encore plus petit sur mobile */
+  .hero h1 {
+    font-size: 2rem;
+  }
 
-    .hero .btn {
-        width: 100%;
-        margin: 6px 0 !important;
-    }
+  /* Boutons pleine largeur sur mobile */
+  .hero .btn {
+    width: 100%;
+    margin: 6px 0 !important;   /* Espacement entre boutons */
+  }
 
-    .profile-image {
-        width: 250px;
-    }
+  /* Image de profil plus petite */
+  .profile-image {
+    width: 250px;
+  }
 
-    section {
-        padding-top: 60px !important;
-        padding-bottom: 60px !important;
-    }
+  /* Sections avec padding uniforme */
+  section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
 }
