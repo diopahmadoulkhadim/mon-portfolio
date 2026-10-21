@@ -1,5 +1,7 @@
 import { CaseStudy, TechImpactItem, Testimonial } from '../types/portfolio';
 
+const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
 export const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'restosen',
@@ -23,7 +25,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     stack: ['React', 'TypeScript', 'Vite', 'Modern CSS', 'Netlify'],
     liveUrl: 'https://restosen.netlify.app/',
     repoUrl: 'https://github.com/diopahmadoulkhadim',
-    imageUrl: '/image/resto.jpg',
+    imageUrl: publicAsset('image/resto.jpg'),
     accentColor: '#f97316',
     showcaseConfig: {
       displayUrl: 'restosen.netlify.app',
@@ -54,7 +56,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     stack: ['Bootstrap 5', 'Responsive CSS', 'Architecture Modulaire', 'GitHub Pages'],
     liveUrl: 'https://diopahmadoulkhadim.github.io/gestion-de-projet/',
     repoUrl: 'https://github.com/diopahmadoulkhadim/gestion-de-projet',
-    imageUrl: '/image/projetplus.jpg',
+    imageUrl: publicAsset('image/projetplus.jpg'),
     accentColor: '#eab308',
     showcaseConfig: {
       displayUrl: 'diopahmadoulkhadim.github.io/gestion-de-projet',
@@ -85,7 +87,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     stack: ['React', 'TypeScript', 'EdTech Architecture', 'Responsive UI', 'Netlify'],
     liveUrl: 'https://senplatformndartech.netlify.app/',
     repoUrl: 'https://github.com/diopahmadoulkhadim',
-    imageUrl: '/image/conference.jpg',
+    imageUrl: publicAsset('image/conference.jpg'),
     accentColor: '#8b5cf6',
     showcaseConfig: {
       displayUrl: 'senplatformndartech.netlify.app',
@@ -165,7 +167,7 @@ export const TESTIMONIALS: Testimonial[] = [
     outcome: '150+ projets accompagnés · Dossiers financés',
     projectRelation: 'Plateforme Web ProjetPlus',
     initials: 'ED',
-    avatarUrl: '/image/el-hadji-baka-dieng.jpg',
+    avatarUrl: publicAsset('image/el-hadji-baka-dieng.jpg'),
   },
   {
     id: 'restosen-fall',

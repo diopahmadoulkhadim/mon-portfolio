@@ -177,7 +177,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <div className="col-md-4 text-center text-md-end">
                 <div className="position-relative d-inline-block">
                   <img
-                    src="/image/profil.jpg"
+                    src={`${import.meta.env.BASE_URL}image/profil.jpg`}
                     alt="Ahmadoul Khadim Diop"
                     className="resume-photo"
                   />

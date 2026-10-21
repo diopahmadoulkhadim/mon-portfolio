@@ -18,3 +18,9 @@ Portfolio personnel de **Ahmadoul Khadim Diop** réécrit avec **React 18**, **T
 - TypeScript
 - Vite
 - Bootstrap 5 & Bootstrap Icons
+
+## Déploiement sur GitHub Pages
+
+Le workflow GitHub Actions situé dans `.github/workflows/deploy.yml` compile le site et publie automatiquement le dossier `dist` à chaque push sur `main` ou `master`.
+
+Dans le dépôt GitHub, ouvrez **Settings > Pages** et sélectionnez **GitHub Actions** comme source de déploiement. Le lien Pages s’affichera dans cette même page lorsque le workflow aura terminé.

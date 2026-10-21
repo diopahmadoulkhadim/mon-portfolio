@@ -466,7 +466,7 @@ export default function App() {
                     }}
                   >
                     <img
-                      src="/image/profil.jpg"
+                      src={`${import.meta.env.BASE_URL}image/profil.jpg`}
                       alt="Ahmadoul Khadim Diop"
                       className="rounded-circle object-fit-cover"
                       style={{ width: '38px', height: '38px', border: '2px solid #3b82f6' }}
@@ -615,7 +615,7 @@ export default function App() {
                     <span>Ouvrir le CV interactif</span>
                   </button>
                   <a
-                    href="/cv.html"
+                    href={`${import.meta.env.BASE_URL}cv.html`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-outline-light d-inline-flex align-items-center gap-2 font-mono text-xs px-3 py-2 rounded-2"
